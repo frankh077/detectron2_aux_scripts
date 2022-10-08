@@ -10,9 +10,6 @@ import numpy as np
 #Nombre del json VIA
 filename = "via_project_2Feb2022_16h44m_json.json"
 
-
-###########################
-
 data = json.load(open(filename,"r"))
 
 for k,v in data.items():#k = "0.jpg"

@@ -1,5 +1,4 @@
 ## Convertidor JSON VIA elipses a formato para Detectron Mask RCNN
-
 import json
 import cv2
 from matplotlib import pyplot as plt
@@ -10,12 +9,6 @@ from detectron2.structures import BoxMode
 import os
 
 
-## PARAMETROS ############
-#Nombre del json VIA
-# filename = '/banano/uvas/racimos/datasets_entrenamiento/curico_dataset_2/via_region_data.json'
-# #Cantidad de fotos etiquetadas completamente
-# path = '/banano/uvas/racimos/datasets_entrenamiento/curico_dataset_2'
-# dataset_name = 'curico_dataset_2'
 finished = 80
 
 filename = '/banano/uvas/racimos/datasets_entrenamiento/datasetCabernet/test/via_region_data.json'
@@ -23,7 +16,6 @@ filename = '/banano/uvas/racimos/datasets_entrenamiento/datasetCabernet/test/via
 path = '/banano/uvas/racimos/datasets_entrenamiento/datasetCabernet/test'
 dataset_name = 'datasetCabernet'
 
-###################################
 
 def flatten(t):
     return [item for sublist in t for item in sublist]

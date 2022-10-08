@@ -17,11 +17,6 @@ def get_prefix(param, value, old_path):
     #img_path_tail = (old_path.split('/')[-1]).split('.')[0] + '.png' ##Correcion extension
     img_path_tail = ('-').join(((old_path.split('/')[-1]).split('.'))[:-1]) + '.png' ##Correcion extension
     print(f'img_path_tail: {img_path_tail}')
-    #img_path_tail = (old_path.split('/')[-1]) ##Correcion extension
-
-
-    #print(f'img_path_base: {img_path_base}')
-    #print(f'img_path_tail: {img_path_tail}')
     signo = None
 
     if value > 1:
@@ -227,27 +222,6 @@ def funcBrightContrast(bright=0):
 
 
 def apply_brightness_contrast(input_img, brightness, contrast, saturation, gamma):
-    """
-    brightness = map(brightness, 0, 510, -255, 255)
-    contrast = map(contrast, 0, 254, -127, 127)
-    if brightness != 0:
-        if brightness > 0:
-            shadow = brightness
-            highlight = 255
-        else:
-            shadow = 0
-            highlight = 255 + brightness
-        alpha_b = (highlight - shadow)/255
-        gamma_b = shadow
-        buf = cv2.addWeighted(input_img, alpha_b, input_img, 0, gamma_b)
-    else:
-        buf = input_img.copy()
-    if contrast != 0:
-        f = float(131 * (contrast + 127)) / (127 * (131 - contrast)) 
-        alpha_c = f
-        gamma_c = 127*(1-f)
-        buf = cv2.addWeighted(buf, alpha_c, buf, 0, gamma_c)
-    """
     #brillo y contraste
     brightness = brightness - 100
     contrast = (contrast + 100) / 100
@@ -272,41 +246,10 @@ def apply_brightness_contrast(input_img, brightness, contrast, saturation, gamma
     cv2.putText(new_image,'B:{},C:{},S:{},G:{}'.format(brightness,contrast,saturation, gamma),(10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     return new_image
 
-"""
-def map(x, in_min, in_max, out_min, out_max):
-    return int((x-in_min) * (out_max-out_min) / (in_max-in_min) + out_min)
-"""
-
 if __name__ == '__main__':
     args = parser.parse_args()
     path = args.input
     print(f'input: {path}')
-
-    '''
-    brillo = [-1,0,1]
-    contraste = [-1, 0, -1]
-    saturacion = [-1, 0, -1]
-    gamma = [-1, 0, -1]
-    '''
     apply_image_adjust(path)
 
-
-    '''
-    original = cv2.imread("test.png", 1)
-    img = original.copy()
-    cv2.namedWindow('Test',1)
-    bright = 100
-    contrast = 0
-    saturation = 20
-    gamma = 10
-    #alpha = float(input('* Enter the alpha value [1.0-3.0]: '))
-    #Brightness value range -255 to 255
-    #Contrast value range -127 to 127
-    cv2.createTrackbar('bright', 'Test', bright, 200, funcBrightContrast)
-    cv2.createTrackbar('contrast', 'Test', contrast, 200, funcBrightContrast)
-    cv2.createTrackbar('saturation', 'Test', saturation, 70, funcBrightContrast)
-    cv2.createTrackbar('gamma', 'Test', gamma, 250, funcBrightContrast)
-    funcBrightContrast(0)
-    cv2.imshow('Test', original)
-    '''
 cv2.waitKey(0)

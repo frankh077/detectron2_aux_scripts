@@ -15,11 +15,6 @@ filename = "via_project_2Feb2022_16h44m_json.json"
 #Cantidad de fotos etiquetadas completamente
 finished = 83
 
-
-###################################
-
-
-
 def flatten(t):
     return [item for sublist in t for item in sublist]
 

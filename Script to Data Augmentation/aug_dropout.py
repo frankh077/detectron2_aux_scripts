@@ -127,13 +127,3 @@ if __name__ == '__main__':
 
 
 
-#Define augmentation pipeline
-#transform = A.Compose([
-    #A.RandomCrop(width=crop_width, height=crop_height)
-    #A.Cutout(num_holes=10, max_h_size=300, max_w_size=300, fill_value=0, always_apply=True, p=1)
-    #A.MaskDropout(max_objects=1, image_fill_value=0, mask_fill_value=0, always_apply=False, p=0.5)
-    #A.RandomSizedBBoxSafeCrop(1080, 1920, erosion_rate=0.0, interpolation=1, always_apply=False, p=1.0)
-#    A.GridDropout(ratio=0.5, unit_size_min=None, unit_size_max=None, holes_number_x=8, holes_number_y=5, shift_x=0, shift_y=0, random_offset=True, fill_value=0, mask_fill_value=0, always_apply=True, p=1) 
-    #A.HorizontalFlip(p=0.5),
-    #A.RandomBrightnessContrast(p=0.2),
-#])

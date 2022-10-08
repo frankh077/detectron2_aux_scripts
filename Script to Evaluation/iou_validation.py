@@ -1,6 +1,3 @@
-# path = '/banano/uvas/racimos/datasets_entrenamiento/consolidado_v2/imagen'  #path de imagenes a inferir y evaluar
-# path_result = r'/banano/uvas/results/evaluacion/modelo_racimos_aumentado/validacion_mely'     #path de carpeta donde se guardará las imagenes inferidas
-
 path = '/banano/uvas/racimos/datasets_entrenamiento/test'  #path de imagenes a inferir y evaluar
 path_result = r'/banano/uvas/results/evaluacion/modelo_color_giros_crops/iou_test_evidente'
 
@@ -24,9 +21,6 @@ dataset = os.path.basename(path)
 
 cfg = get_cfg()
 cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
-#cfg.MODEL.WEIGHTS = '/home/omia/banano/uvas/eddy/datasets/datasets/output/model_final.pth'
-#cfg.MODEL.WEIGHTS = '/banano/uvas/racimos/datasets_entrenamiento/output__prev/modelo_racimos_v3.pth'
-#cfg.MODEL.WEIGHTS = '/banano/uvas/racimos/datasets_entrenamiento/output_consolidadov2_aumentado_color/model_final.pth'
 cfg.MODEL.WEIGHTS = '/banano/uvas/racimos/datasets_entrenamiento/evidentes/output/model_final.pth'
 cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.8
 cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1
