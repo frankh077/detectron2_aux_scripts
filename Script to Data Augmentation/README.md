@@ -1,10 +1,10 @@
 Due to the complexity of the detection, a robust model is required. For this reason, an extensive augmentation of the consolidated dataset was performed.
 
-## Augmentations
+## Augmentations1
 
-- Grid Dropout (Albumentations).
-- Colors (Detectron2)
-- Rotations (Detectron2)
+- [Grid Dropout (Albumentations)](#Dropout)
+- [Colors (Detectron2)](#Color)
+- [Rotations (Detectron2)](#Rotation)
 
 #### Dataset augmentation: Grid Dropout
 
@@ -13,11 +13,12 @@ For the Grid Dropout augmentation we used the Albumentations library, because it
 ### Dataset augmentation: Colors
 
 This code modifies:
-(+/-) brightness
-(+/-) contrast
-(+/-) saturation
-(+/-) gamma
-for each image.
+
+- (+/-) brightness
+- (+/-) contrast
+- (+/-) saturation
+- (+/-) gamma
+for each images.
 
 ### Dataset augmentation: Rotations
 
