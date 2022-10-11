@@ -9,7 +9,7 @@ import detectron2.structures.boxes
 import random
 import subprocess
 
-## PARAMETROS ############
+
 #Nombre del json VIA
 filename = "via_project_2Feb2022_16h44m_json.json"
 #Cantidad de fotos etiquetadas completamente
@@ -43,7 +43,6 @@ def Ellipse2Mask(ellipse,n):
         y = round(ellipse["rx"]*np.cos(i*dt)*np.sin(ellipse["theta"]) + ellipse["ry"]*np.sin(i*dt)*np.cos(ellipse["theta"]) + ellipse["cy"])
 
         points.append([x,y])
-        #points.append(round(y))
         i += 1
 
 
@@ -58,8 +57,8 @@ curr = 0
 
 dataset = []
 
-for k,v in data.items():#k = "0.jpg"
-    #print(k)
+for k,v in data.items():
+
     img_path = v["filename"]
     img = cv2.imread(img_path)
 
@@ -81,8 +80,6 @@ for k,v in data.items():#k = "0.jpg"
 
     dataset.append(img_data)
 
-    #cv2.imshow('',img)
-    #cv2.waitKey(0)
     print('annotations_img_2/'+k)
     subprocess.run(['pwd'])
     cv2.imwrite("annotations_img_2/"+k, img.astype(np.float32))

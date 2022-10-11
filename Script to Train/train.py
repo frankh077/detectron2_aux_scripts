@@ -27,7 +27,6 @@ def get_dataset_dicts(directory):
     classes = ['disease']
     dataset_dicts = []
     for idx, filename in enumerate([file for file in os.listdir(directory) if file.endswith('.json')]):
-        #print(f'idx: {idx}, filename: {filename}')
         json_file = os.path.join(directory, filename)
         with open(json_file) as f:
             img_anns = json.load(f)
@@ -37,7 +36,6 @@ def get_dataset_dicts(directory):
         filename = os.path.join(directory, img_anns["imagePath"])
         
         record["file_name"] = filename
-        #print(f'idx: {idx}, filename: {filename}')
         record["image_id"] = idx
         record["height"] = 3456
         record["width"] = 4608
@@ -73,7 +71,6 @@ def get_trainer_config():
     cfg.SOLVER.IMS_PER_BATCH = 2
     cfg.SOLVER.BASE_LR = 0.001
     cfg.SOLVER.MAX_ITER = 100
-    #cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 128
     cfg.SOLVER.STEPS = []        # do not decay learning rate
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1
     os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
@@ -81,7 +78,6 @@ def get_trainer_config():
 
 def main():
     #Load dataset
-    #dicts = get_dataset_dicts(folder_name+'/')
     for d in ["train", "test"]: 
         DatasetCatalog.register("dataset_" + d, 
                                 lambda d=d: get_dataset_dicts(folder_name+'/' + d))

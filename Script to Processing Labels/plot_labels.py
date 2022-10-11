@@ -43,7 +43,6 @@ def Ellipse2Mask(ellipse,n):
         y = round(ellipse["rx"]*np.cos(i*dt)*np.sin(ellipse["theta"]) + ellipse["ry"]*np.sin(i*dt)*np.cos(ellipse["theta"]) + ellipse["cy"])
 
         points.append([x,y])
-        #points.append(round(y))
         i += 1
 
 
@@ -56,9 +55,9 @@ data = json.load(open(filename,"r"))
 curr = 0
 dataset = []
 
-for k,v in data.items():#k = "0.jpg"
+for k,v in data.items():
     img_path = v["filename"]
-    #print('IMG_PATH:', img_path)
+    
     try:
         img = cv2.imread(img_path)
         img.shape
