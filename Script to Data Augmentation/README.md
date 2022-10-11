@@ -2,9 +2,9 @@ Due to the complexity of the detection, a robust model is required. For this rea
 
 ## Augmentations1
 
-- [Grid Dropout (Albumentations)](#Dropout)
-- [Colors (Detectron2)](#Color)
-- [Rotations (Detectron2)](#Rotation)
+- [Grid Dropout (Albumentations)](https://github.com/frankh077/detectron2_aux_scripts/blob/main/Script%20to%20Data%20Augmentation/aug_dropout.py)
+- [Colors (Detectron2)](https://github.com/frankh077/detectron2_aux_scripts/blob/main/Script%20to%20Data%20Augmentation/augment_color.py)
+- [Rotations (Detectron2)](https://github.com/frankh077/detectron2_aux_scripts/blob/main/Script%20to%20Data%20Augmentation/aug_rotations.py)
 
 #### Dataset augmentation: Grid Dropout
 
