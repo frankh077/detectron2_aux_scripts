@@ -42,7 +42,7 @@ for image in os.listdir(path):
     bbox_raw = bbox_raw.get_fields()
     bbox_raw = bbox_raw['pred_boxes'].tensor.numpy()
     bbox_raw = list(map(numpy.ndarray.tolist, bbox_raw))
-    bbox_raw = list(map(lambda x: list(map(int, x)), bbox_raw))#esta
+    bbox_raw = list(map(lambda x: list(map(int, x)), bbox_raw))
     cd = cd + len(bbox_raw)
     cdi = len(bbox_raw)
     cdi_lis.append(cdi)

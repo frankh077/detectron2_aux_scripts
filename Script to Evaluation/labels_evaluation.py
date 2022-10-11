@@ -51,11 +51,11 @@ class Predictor:
         self.predictor = DefaultPredictor(self.cfg)
     
     def make_pred(self, im, name):
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        outputs = self.predictor(im)
+        font = cv2.FONT_HERSHEY_SIMPLEX # define un tipo de letra 
+        outputs = self.predictor(im) # infiere la imagen 
         #Get bboxes from prediction output
-        bbox_raw = outputs['instances'].to('cpu')
-        bbox_raw = bbox_raw.get_fields()
+        bbox_raw = outputs['instances'].to('cpu') # paso las instancias al cpu
+        bbox_raw = bbox_raw.get_fields() 
         bbox_raw = bbox_raw['pred_boxes'].tensor.numpy()
         bbox_raw = list(map(numpy.ndarray.tolist, bbox_raw))
         bbox_raw = list(map(lambda x: list(map(int, x)), bbox_raw))
@@ -66,11 +66,11 @@ class Predictor:
         scores_raw = scores_raw.get_fields()
         scores_raw = scores_raw['scores'].numpy()
         
-        for bbox, score in zip(bbox_raw, scores_raw):
+        for bbox, score in zip(bbox_raw, scores_raw): 
             left_top = tuple(bbox[:2])
             right_bottom = tuple(bbox[2:])
             score_height = (bbox[0], bbox[1] - 10) 
-            im = cv2.rectangle(im,right_bottom,left_top,(0,0,255),15)
+            im = cv2.rectangle(im,right_bottom,left_top,(0,0,255),15) 
             im = cv2.putText(im,"{:.2f}".format(score),score_height, font, 2,(0,0,255),5,cv2.LINE_AA)
             cv2.imwrite(name.split('.')[0] + '-inf.JPG' ,im)
 
@@ -169,7 +169,7 @@ class Predictor:
                 print(f'False positive found: {bbox} not in {annotations}')
                 self.writeImage(im,im_path,bbox,annotations)
 
-    def agregar_etiqueta(self, image_path, polygon_to_add):
+    def add_labels(self, image_path, polygon_to_add):
         json_path = image_path.split(".")[0] + '.json'
         
         with open(json_path) as json_file:
