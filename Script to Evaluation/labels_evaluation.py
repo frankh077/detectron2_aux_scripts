@@ -1,6 +1,3 @@
-#from __future__ import annotations
-#from email.mime import image
-
 import detectron2
 from detectron2.utils.logger import setup_logger
 import numpy as np

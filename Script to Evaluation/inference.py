@@ -20,7 +20,7 @@ dataset = os.path.basename(path)
 #load of weights
 cfg = get_cfg()
 cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
-cfg.MODEL.WEIGHTS = 'path/to/the_model/Grapes_Bunch_Detector_Augmented_Model.pth'     # Set path to the bunch detector model
+cfg.MODEL.WEIGHTS = 'path/to/the_model/Grapes_Bunch_Detector_Augmented_Model.pth' # Set path to the bunch detector model
 cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5 
 cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1
 cfg.DATASETS.TEST = ("dataset_test", )
