@@ -1,6 +1,6 @@
 # detectron2_aux_scripts
 
-In this repository you will find all the auxiliary  scripts that was used with detectron2.
+In this repository you will find all the auxiliary  scripts that was used with detectron2.jb
 
 ## Table of Contents
 

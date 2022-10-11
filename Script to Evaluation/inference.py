@@ -3,7 +3,6 @@ path = '/path/to/folder/with/images_to_infer'
 # Set folder path where the inferred images are saved
 path_result = r'/path/to/folder/where/images_are_saved' 
 
-# The model path used for inference is set below
 
 # import some common libraries
 import numpy as np

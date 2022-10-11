@@ -1,7 +1,7 @@
 path = '/banano/uvas/racimos/datasets_entrenamiento/test'  #path de imagenes a inferir y evaluar
 path_result = r'/banano/uvas/results/evaluacion/modelo_color_giros_crops/iou_test_evidente'
 
-# import some common libraries
+# import some common libraries. 
 import cv2
 import os
 import json

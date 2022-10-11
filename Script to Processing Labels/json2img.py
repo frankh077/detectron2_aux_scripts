@@ -6,7 +6,7 @@ import cv2
 from matplotlib import pyplot as plt
 import numpy as np
 
-#Nombre del json VIA
+
 filename = "via_project_2Feb2022_16h44m_json.json"
 
 data = json.load(open(filename,"r"))
