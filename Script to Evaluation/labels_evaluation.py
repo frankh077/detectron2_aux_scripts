@@ -51,10 +51,10 @@ class Predictor:
         self.predictor = DefaultPredictor(self.cfg)
     
     def make_pred(self, im, name):
-        font = cv2.FONT_HERSHEY_SIMPLEX # define un tipo de letra 
-        outputs = self.predictor(im) # infiere la imagen 
+        font = cv2.FONT_HERSHEY_SIMPLEX 
+        outputs = self.predictor(im) 
         #Get bboxes from prediction output
-        bbox_raw = outputs['instances'].to('cpu') # paso las instancias al cpu
+        bbox_raw = outputs['instances'].to('cpu') 
         bbox_raw = bbox_raw.get_fields() 
         bbox_raw = bbox_raw['pred_boxes'].tensor.numpy()
         bbox_raw = list(map(numpy.ndarray.tolist, bbox_raw))
