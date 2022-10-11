@@ -248,7 +248,6 @@ for d in dataset_dicts:
     path_image = d["file_name"]
     im = cv2.imread(path_image)
     image = os.path.basename(path_image)
-    #print("The name of img:", image)
     height = im.shape[0]
     width = im.shape[1]
     outputs = predictor(im)
@@ -300,7 +299,6 @@ for d in dataset_dicts:
     #Cuando hay prediccion y etiqueta: graficar prediccion y etiquetas emparejadas
     #true positive
     else:
-      #startTime_3 = time.time()
       new_raw = []
       new_instp = []
       sep = []
@@ -309,13 +307,11 @@ for d in dataset_dicts:
       serfp = []
       #Se asigna etiqueta a cada prediccion en caso de iou > 0.2 y se guarda en listas new raw y new instp si no se almacenan en listas sep y ser
       for bbox in bbox_raw:
-        #print("The bbox", bbox)
         bboxtp = None
         max_iou = -1
         max_index = -1
         for i, inst in enumerate(instp):
           iou = bb_iou(bbox, inst)
-          #print("The IOU",iou)
           if iou > 0.2:
             if iou > max_iou:
                 max_iou = iou

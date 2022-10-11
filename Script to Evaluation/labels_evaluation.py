@@ -25,10 +25,7 @@ from scipy.spatial import ConvexHull, convex_hull_plot_2d
 setup_logger()
 
 weights_path = '/exterior/conteo_plantas/9febp2/9feb2_2/model_final.pth' 
-#images_path = '/exterior/etiquetado_instancias/global/train_aumentado_2/aumentadoA_2/train/'
 images_path = '/exterior/conteo_plantas/9febp2/9feb2_2/originales'
-#images_path = '/exterior/etiquetado_instancias/global/train_aumentado_2/aumentadoA_2/'
-
 new_labels = 0
 
 def get_images_from_path(images_path):
@@ -40,7 +37,6 @@ def get_images_from_path(images_path):
             if file.split(".")[1] == 'JPG':
                 list_images.append(file)
 
-    #list_images = [lambda x: x.split(".")[1] == 'JPG' for x in list_images]
     print(f'Lista de imagenes en el directorio: {list_images}')
     return list_images
 
@@ -60,7 +56,6 @@ class Predictor:
     def make_pred(self, im, name):
         font = cv2.FONT_HERSHEY_SIMPLEX
         outputs = self.predictor(im)
-        #print(f'outputs: {outputs}')
         #Get bboxes from prediction output
         bbox_raw = outputs['instances'].to('cpu')
         bbox_raw = bbox_raw.get_fields()
@@ -80,9 +75,7 @@ class Predictor:
             score_height = (bbox[0], bbox[1] - 10) 
             im = cv2.rectangle(im,right_bottom,left_top,(0,0,255),15)
             im = cv2.putText(im,"{:.2f}".format(score),score_height, font, 2,(0,0,255),5,cv2.LINE_AA)
-            #cv2_imshow(im)
             cv2.imwrite(name.split('.')[0] + '-inf.JPG' ,im)
-            #images_report.append(im)
 
     def get_annotation(self, image_path):
         #Funcion que extrae las etiquetas del json de cada imagen.
@@ -105,9 +98,7 @@ class Predictor:
         bboxes = [] 
 
         for shape in annotations:
-            #print(f'shape in annotation: {shape}: {annotations}')
             for point in shape:
-                #print(f'point in shape: {point}:{shape}')
                 x.append(point[0]) 
                 y.append(point[1])
             bboxes.append([min(x),min(y),max(x),max(y)])
@@ -116,15 +107,6 @@ class Predictor:
     def get_iou(self, bb1, bb2):
         bb1 = {'x1':bb1[0], 'x2':bb1[2], 'y1':bb1[1], 'y2':bb1[3]}
         bb2 = {'x1':bb2[0], 'x2':bb2[2], 'y1':bb2[1], 'y2':bb2[3]}
-        """
-        Calculate the Intersection over Union (IoU) of two bounding boxes.
-        Parameters
-        ----------
-        bb1 : dict
-            Keys: {'x1', 'x2', 'y1', 'y2'}
-            The (x1, y1) position is at the top left corner,
-            the (x2, y2) position is at the bottom right corner
-        """
         assert bb1['x1'] < bb1['x2']
         assert bb1['y1'] < bb1['y2']
         assert bb2['x1'] < bb2['x2']
@@ -173,14 +155,11 @@ class Predictor:
             score_height = (bbox[0], bbox[1] - 10) 
             im = cv2.rectangle(im,right_bottom,left_top,(255,0,0),2)
             im = cv2.putText(im,'label',score_height, font, 0.7,(255,0,0),2,cv2.LINE_AA)
-            #cv2_imshow(im)
-            #cv2.imwrite(name.split('.')[0] + '-inf.JPG' ,im)
-            #images_report.append(im)
+
         #Second, draw bbox false positive
         left_top = tuple(bbox_fp[:2])
         right_bottom = tuple(bbox_fp[2:])
-        score_height = (bbox_fp[0], bbox_fp[1] - 10) 
-        #score_height = (bbox[0], bbox[1] - 10) 
+        score_height = (bbox_fp[0], bbox_fp[1] - 10)  
         im = cv2.rectangle(im,right_bottom,left_top,(0,0,255),2)
         im = cv2.putText(im,'FP',score_height, font, 0.7,(0,0,255),2,cv2.LINE_AA)
 
@@ -192,7 +171,6 @@ class Predictor:
             if not self.bbox_in_annotation(bbox, annotations):
                 print(f'False positive found: {bbox} not in {annotations}')
                 self.writeImage(im,im_path,bbox,annotations)
-                #self.agregar_etiqueta(im_path,mask)
 
     def agregar_etiqueta(self, image_path, polygon_to_add):
         json_path = image_path.split(".")[0] + '.json'
@@ -216,7 +194,6 @@ class Predictor:
 
     def get_comparacion(self, image_data, image_path):
         bbox, mask = self.get_bbox_mask(image_data)
-        #self.draw_mask(image_data, mask)
         annotations = self.get_annotation(image_path)
         bbox_annotation = self.get_bboxFromAnnotation(annotations)
         print(f'bbox: {bbox}, annotations: {bbox_annotation}')
@@ -227,18 +204,14 @@ class Predictor:
     def get_bbox_mask(self,im):
         mask_coordinates = []
         outputs = self.predictor(im)
-        #print(f'outputs: {outputs}')
         #Get bboxes from prediction output
         bbox_raw = outputs['instances'].to('cpu')
-        #mask= outputs['instances'].get('pred_masks')
         mask = outputs['instances'].pred_masks.to('cpu').numpy()
-        #mask= mask.to('cpu')
         num, h, w= mask.shape
         bin_mask= np.zeros((h, w))
     
         for m in mask:
             bin_mask+= m
-        #    #pdb.set_trace()
         counter = 0
         sampler = 10
         for x, row in enumerate(bin_mask):
@@ -248,16 +221,11 @@ class Predictor:
 
 
         hull = ConvexHull(mask_coordinates)
-        
-        #print(f'len mask_coordinates: {len(mask_coordinates)}')
-        #print(f'**hull : {hull.vertices}')
         polygon = []
         for vert in hull.vertices:
             polygon.append(mask_coordinates[vert])
-        #print(f'len hull: {len(mask_coordinates)}')
         
         #simplices
-        #print(f'len mask_coordinates: {len(mask_coordinates)}')
         bbox_raw = bbox_raw.get_fields()
         bbox_raw = bbox_raw['pred_boxes'].tensor.numpy()
         bbox_raw = list(map(numpy.ndarray.tolist, bbox_raw))
@@ -283,6 +251,5 @@ predictor = Predictor(weights_path)
 images = get_images_from_path(images_path)
 
 for image in images:
-  #predictor.get_comparacion(cv2.imread(image), image)
   predictor.make_pred(cv2.imread(image), image)
-  #predictor.get_double_instace(image)
+
