@@ -19,19 +19,10 @@ output_folder = 'consolidado_v2_evidentes_aumentado_dropout'
 #prefix
 prefix_name = 'A-dropout_'
 def polys_to_mask(polys, img):
-    '''
-    Extract polygon from annotation and returns a mask for all annotations
-    Input:
-        Annotation, shape value
-        I
-    Output:
-        Numpy array with all masks from annotation
-    '''
     height, width = img.shape[:2]
     #print(f'img.shape[:2]: {img.shape[:2]}')
     masks2 = np.zeros([height,width])
     
-
     #draw boundaries
     for poly in polys:
         nparray = np.array(poly['points'])
@@ -100,7 +91,6 @@ def main():
     files = {'train': glob.glob(os.path.join(input_folder, 'train') + "/*"),'test':glob.glob(os.path.join(input_folder, 'test') + "/*")}
     files_name = {'train': [x.split('/')[-1] for x in files['train']],'test': [x.split('/')[-1] for x in files['test']]}
      
-    #print(f'files: {files_name}')
 
     for k in files.keys():
         for idx,file in enumerate(files[k]):
@@ -117,7 +107,6 @@ def main():
                 else:
                     file_error +=1
                     print(f'Error: {img_name + ".json"} does not exists')
-            #print(f'file1:{file}')
     print(f'No se encontraron {file_error} imagenes')
 
 

@@ -52,8 +52,6 @@ def correct_json(json_name, new_img_name):
     with open(new_path2, "w") as outfile:
         json.dump(data, outfile)
 
-
-
 def aplica_brillo(input, brightness):
     print(f'In brillo')
     carpetas = ['test', 'train']
@@ -164,8 +162,6 @@ def aplica_gamma(input, gamma):
                     ##corregir json
                     json_path = ('.').join(img_path.split('.')[:-1]) + '.json'
                     correct_json(json_path, new_img_name)
-
-
     
 def apply_image_adjust(input):
     brillo = [40,-40]
@@ -175,9 +171,7 @@ def apply_image_adjust(input):
 
     #Obtener los nombres de las carpetas
     path = input+'/'
-    #print(f'path: {input}')
     carpetas = list(next(os.walk(path))[1])
-    #carpetas = ['+brillo','-brillo']
     carpetas = ['+brillo','-brillo','+contraste','-contraste','+gamma','-gamma','+saturacion','-saturacion']
 
     print(f'carpetas: {carpetas}')
@@ -207,11 +201,6 @@ def apply_image_adjust(input):
             else:
                 aplica_gamma(path, gamma[1])
            
-        
-
-
-    
-
 def funcBrightContrast(bright=0):
     bright = cv2.getTrackbarPos('bright', 'Test')
     contrast = cv2.getTrackbarPos('contrast', 'Test')

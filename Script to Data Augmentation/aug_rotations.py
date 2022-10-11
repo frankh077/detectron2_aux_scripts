@@ -106,21 +106,6 @@ def augmentation_rotation(transform,img_path, label_path, angle, folder):
         json.dump(new_label, outfile)
         #outfile.write(json_obj)
     
-    '''
-    #move original image
-    output_img_path = os.path.join(output_path, img_path.split('/')[-1])
-    cv2.imwrite(output_img_path, img_data)
-    #json_obj = json.dumps(json_data) #write new jsonfile
-
-    with open(output_path + '/new_json.json','w') as outfile:
-        json.dump(json_data, outfile)
-        #outfile.write(json_obj)
-
-    new_im, new_mask = apply_transform(transform, image, masks) #Apply transformation, return new mask and new image
-    new_label=mask_to_label(new_mask,new_name) # Convert mask to label
-    write_results(new_im, new_label,new_name,folder) #Write the new image and new label
-    pass
-    '''
 def copy_original(image):
     pass 
 
@@ -142,7 +127,6 @@ def main():
     files = {'train': glob.glob(os.path.join(input_path, 'train') + "/*"),'test':glob.glob(os.path.join(input_path, 'test') + "/*")}
     files_name = {'train': [x.split('/')[-1] for x in files['train']],'test': [x.split('/')[-1] for x in files['test']]}
      
-
     for k in files.keys():
         for idx,file in enumerate(files[k]):
             print(f'{k}) {idx+1}/{len(files[k])}')
