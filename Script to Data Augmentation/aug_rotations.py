@@ -26,7 +26,6 @@ def get_poly(ans):
     an_seg = []
     for an in ans:
         an = np.array(an['segmentation'])
-        #print(f"an['segmentation']: {an}")
         an_formated = np.reshape(an,(round(len(an[0])/2),2))
         an_seg.append(an_formated)
     return an_seg
@@ -50,7 +49,6 @@ def compute_bbox(poly_int32):
 def mask_to_label(mask, name, size):
     print(f'mask shape: {mask}')
     shapes = []
-    #contours, _ = cv2.findContours(mask.astype(np.uint8), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
     baselabel = {"version": "4.2.9", 
                  "flags": {}, 
                  "shapes": [], 
@@ -73,7 +71,6 @@ def get_poly(ans):
     an_seg = []
     for an in ans:
         an = np.array(an['points'])
-        #print(f"an['segmentation']: {an}")
         an_seg.append(an)
     return an_seg
     
@@ -85,26 +82,20 @@ def augmentation_rotation(transform,img_path, label_path, angle, folder):
     img_data = cv2.imread(img_path)
     label = json.load(open(label_path))
     mask = get_poly(label['shapes'])
-    
-    
+
     #load image
     augmentations = []
 
-
     #Extract mask
-    
-    #for k,v in augs.items():
     input = T.AugInput(img_data)
     transform = transform(input)
     img_tran = input.image
-    #img_tran = None
     polygons_transformed = transform.apply_polygons(mask)
     new_img_name = generate_img(img_tran, angle, label['imagePath'], folder)
     new_label_name = new_img_name.split('.')[0] + '.json'
     new_label=mask_to_label(polygons_transformed,new_img_name, img_tran.shape)
     with open(os.path.join(output_path,folder, new_label_name),'w') as outfile:
         json.dump(new_label, outfile)
-        #outfile.write(json_obj)
     
 def copy_original(image):
     pass 
@@ -145,7 +136,6 @@ def main():
                 else:
                     file_error +=1
                     print(f'Error: {img_name + ".json"} does not exists')
-            #print(f'file1:{file}')
     print(f'No se encontraron {file_error} imagenes')
 
 if __name__ == '__main__':

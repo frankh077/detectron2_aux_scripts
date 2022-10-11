@@ -20,7 +20,6 @@ output_folder = 'consolidado_v2_evidentes_aumentado_dropout'
 prefix_name = 'A-dropout_'
 def polys_to_mask(polys, img):
     height, width = img.shape[:2]
-    #print(f'img.shape[:2]: {img.shape[:2]}')
     masks2 = np.zeros([height,width])
     
     #draw boundaries
@@ -64,7 +63,6 @@ def write_results(new_img, new_label, new_name, folder):
     output_path = os.path.join(output_folder, folder)
     output_image = os.path.join(output_path, new_name + '.jpg')
     output_label = os.path.join(output_path, new_name + '.json')
-    #print(f'Saving: \n{output_image}\n{output_label}')
     cv2.imwrite(output_image, new_img)
     with open(output_label, "w") as outfile:
         json.dump(new_label, outfile)

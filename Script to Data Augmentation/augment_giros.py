@@ -99,10 +99,8 @@ def augment_data(label, folder):
         json.dump(json_data, outfile)
         
 
-#folders = ['test','train']
 json_data_ori = copy.deepcopy(json_data)
 for folder in json_data_ori:
-    #print(f'el:{folder}')
     for label in json_data_ori[folder]:
         print(f"label:{label['file_name']}")
         aug_data = augment_data(label,folder) 

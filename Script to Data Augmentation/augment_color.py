@@ -14,7 +14,6 @@ parser.add_argument('--input', help='Path to images folder.', default='.')
 
 def get_prefix(param, value, old_path):
     img_path_base = old_path.split('/')[:-1]
-    #img_path_tail = (old_path.split('/')[-1]).split('.')[0] + '.png' ##Correcion extension
     img_path_tail = ('-').join(((old_path.split('/')[-1]).split('.'))[:-1]) + '.png' ##Correcion extension
     print(f'img_path_tail: {img_path_tail}')
     signo = None
@@ -39,7 +38,6 @@ def correct_json(json_name, new_img_name):
     new_json_base = json_name.split('/')[:-1]
     new_json_tail = json_name.split('/')[-1].split('.')[0] + '.json'
     new_json_path = ('/').join(new_json_base) + '/' + new_json_tail
-    #new_file_name = new_img_name.split('.')[0] + '.json'
     new_file_name = ('-').join(new_img_name.split('.')[:-1]) + '.json'
     print(f'**prev_file_name: {json_name}')
     print(f'**new_file_name: {new_file_name}')
@@ -56,11 +54,9 @@ def aplica_brillo(input, brightness):
     print(f'In brillo')
     carpetas = ['test', 'train']
     for carpeta in carpetas:
-        #path_1 = input + '/'
         path_1 = input + '/' + carpeta + '/'
         print(f'path_1: {path_1}')
         files = list(next(os.walk(path_1)))
-        #print(f'archivos: {files}')
         for file in files[2]:
             print(f'file: {file}')
             if file:
@@ -68,8 +64,6 @@ def aplica_brillo(input, brightness):
                     img_path = path_1 + file
                     print(f'aplicando ajuste brillo a: {img_path}')
                     input_img = cv2.imread(img_path, 1)
-                    #brightness = brightness - 100
-                    #contrast = (contrast) / 100
                     new_image = np.zeros(input_img.shape, input_img.dtype)
                     new_image = cv2.convertScaleAbs(input_img, alpha=1, beta=brightness)
                     ##Agregar prefijo aumento
@@ -94,11 +88,8 @@ def aplica_contraste(input, contraste):
                     img_path = path_1 + file
                     input_img = cv2.imread(img_path, 1)
                     print(f'aplicando ajuste contraste a: {img_path}')
-                    #brightness = brightness - 100
-                    #contrast = (contrast) / 100
                     new_image = np.zeros(input_img.shape, input_img.dtype)
                     new_image = cv2.convertScaleAbs(input_img, alpha=contraste, beta=0)
-                    #cv2.imwrite(img_path, new_image)
                     new_img_path,  new_img_name= get_prefix('contraste', contraste, img_path)
                     print(f'**************escribiendo imagen: {new_img_path}')
                     cv2.imwrite(new_img_path, new_image)
@@ -127,7 +118,6 @@ def aplica_saturacion(input, saturation):
                     s = np.clip(s,0,255)
                     new_image = cv2.merge([h,s,v])   
                     new_image = cv2.cvtColor(new_image.astype("uint8"), cv2.COLOR_HSV2BGR)
-                    #cv2.imwrite(img_path,new_image)
                     new_img_path,  new_img_name= get_prefix('saturacion', saturation, img_path)
                     print(f'**************escribiendo imagen: {new_img_path}')
                     cv2.imwrite(new_img_path, new_image)
@@ -154,7 +144,6 @@ def aplica_gamma(input, gamma):
                         lookUpTable[0,i] = np.clip(pow(i / 255.0, gamma) * 255.0, 0, 255)
             
                     new_image = cv2.LUT(input_img, lookUpTable)
-                    #cv2.imwrite(img_path,new_image)
                     new_img_path,  new_img_name= get_prefix('gamma', gamma, img_path)
                     print(f'**************escribiendo imagen: {new_img_path}')
                     cv2.imwrite(new_img_path, new_image)
