@@ -1,8 +1,3 @@
-#definir paths
-path = '/banano/uvas/datasets/dataset_v3_cyt'  #path de imagenes a inferir
-path_result = r'/banano/uvas/results/evaluacion/v3_cyt'     #path de carpeta donde se guardará las imagenes inferidas
-etiquetas = '/banano/uvas/etiquetas_vgg/v3_59.json'    #path de archivo json con etiquetas
-
 # import some common libraries
 import numpy
 import cv2
@@ -10,6 +5,12 @@ import os
 import json
 import pandas as pd
 import numpy as np
+
+#define paths
+path = '/path/to/folder/with/images_to_infer'  
+path_result = r'/path/to/folder/where/images_are_saved' 
+etiquetas = 'json/file/path/with/labels'
+
 
 # import some common detectron2 utilities
 from detectron2 import model_zoo
@@ -27,7 +28,7 @@ cfg.DATASETS.TEST = ("dataset_test", )
 cfg.TEST.DETECTIONS_PER_IMAGE = 200
 predictor = DefaultPredictor(cfg)
 
-#inferencia y evaluacion
+#inference and evaluation
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 f = open(etiquetas)
@@ -51,7 +52,7 @@ for image in os.listdir(path):
     bbox_raw = bbox_raw.get_fields()
     bbox_raw = bbox_raw['pred_boxes'].tensor.numpy()
     bbox_raw = list(map(numpy.ndarray.tolist, bbox_raw))
-    bbox_raw = list(map(lambda x: list(map(int, x)), bbox_raw))#esta
+    bbox_raw = list(map(lambda x: list(map(int, x)), bbox_raw))
     cd = cd + len(bbox_raw)
     cdi = len(bbox_raw)
 
@@ -82,8 +83,6 @@ for image in os.listdir(path):
     
     os.chdir(path_result)
     cv2.imwrite(image, im.astype(np.float32))
-
-    #print('DETECCIONES POR IMAGEN:', cdi)
     cdi_lis.append(cdi)
     dv = abs(cdi - len(shapes_images))
     dv_list.append(dv)

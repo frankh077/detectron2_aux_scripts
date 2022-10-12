@@ -7,11 +7,9 @@ from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
 from detectron2.config import get_cfg
 
-# Set path to images to infer
-path = '/path/to/folder/with/images_to_infer'  
-# Set folder path where the inferred images are saved
-path_result = r'/path/to/folder/where/images_are_saved' 
 
+path = '/path/to/folder/with/images_to_infer'  
+path_result = r'/path/to/folder/where/images_are_saved' 
 dataset = os.path.basename(path)
 
 #load of weights

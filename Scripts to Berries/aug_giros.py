@@ -6,15 +6,14 @@ from pprint import pprint
 import copy
 import os
 
-input_path = 'consolidado_1'
-output_path = 'consolidado_1_giros3'
-json_file = 'consolidado_1/dataset.json'
-
+input_path = '/path/to/folder/with/images' 
+output_path = r'/path/to/folder/where/images_are_saved'
+json_file = 'file/json/with_lables'
 idx = 213
 f = open(json_file)
-json_data = json.load(f)  # cargar las etiquetas en un dicccionario
+json_data = json.load(f)  
 
-# definir los giros que se requieren, key == angle (46,46).
+# define required turns, key == angle (46,46).
 augs = {46: T.AugmentationList([T.RandomRotation(angle=46, interp=None)]),
         44: T.AugmentationList([T.RandomRotation(angle=44, interp=None)]),
         42: T.AugmentationList([T.RandomRotation(angle=42, interp=None)]),
@@ -138,16 +137,9 @@ def augment_data(label, folder):
 
     with open(output_path + '/new_json.json', 'w') as outfile:
         json.dump(json_data, outfile)
-        # outfile.write(json_obj)
 
-# image_label
-# image_label = {'file_name': None, 'image_id': None, ''}
-
-
-#folders = ['test','train']
 json_data_ori = copy.deepcopy(json_data)
 for folder in json_data_ori:
-    # print(f'el:{folder}')
     for label in json_data_ori[folder]:
         print(f"label:{label['file_name']}")
         aug_data = augment_data(label, folder)
