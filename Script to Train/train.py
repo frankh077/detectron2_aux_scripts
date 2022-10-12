@@ -71,7 +71,7 @@ def get_trainer_config():
     cfg.SOLVER.IMS_PER_BATCH = 2
     cfg.SOLVER.BASE_LR = 0.001
     cfg.SOLVER.MAX_ITER = 100
-    cfg.SOLVER.STEPS = []        # do not decay learning rate
+    cfg.SOLVER.STEPS = []        
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1
     os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
     return cfg
