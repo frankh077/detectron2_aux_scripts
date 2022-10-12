@@ -1,5 +1,5 @@
 
-# Augmentations Data
+# Data Augmentations
 
 Due to the complexity of the detection, a robust model is required. For this reason, an extensive augmentation of the consolidated dataset was performed.
 
