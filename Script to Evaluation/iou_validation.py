@@ -1,5 +1,3 @@
-
-# import some common libraries. 
 import cv2
 import os
 import json
