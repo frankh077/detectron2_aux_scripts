@@ -6,13 +6,13 @@ from pprint import pprint
 import copy
 import os
 
-input_path = 'consolidado_1'
-output_path = 'consolidado_1_giros2'
-json_file = 'consolidado_1/dataset.json'
+input_path = '/path/to/folder/with/images_to_infer' 
+output_path = r'/path/to/folder/where/images_are_saved'
+json_file = 'file/json/'
 
 idx = 213
 f = open(json_file)
-json_data = json.load(f) #cargar las etiquetas en un dicccionario
+json_data = json.load(f) 
 
 augs = {16:T.AugmentationList([T.RandomRotation(angle=16, interp=None)]),
         12:T.AugmentationList([T.RandomRotation(angle=12, interp=None)]),

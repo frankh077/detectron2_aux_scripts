@@ -24,16 +24,12 @@ def get_prefix(param, value, old_path):
         signo = '-'
     
     img_path_nuevo = signo+param+'_'+img_path_tail
-
-    ##corregir extension
     img_path = '/'.join(img_path_base) + '/'+img_path_nuevo
-
     print(f'new path: {img_path}, new name : {img_path_nuevo}')
     
     return img_path,img_path_nuevo
 
 def correct_json(json_name, new_img_name):
-    ##Corrige el nombre de la imagen a la que apunta agregando el prefijo del aumento y tambien el nombre del json
     f = open(json_name)
     new_json_base = json_name.split('/')[:-1]
     new_json_tail = json_name.split('/')[-1].split('.')[0] + '.json'
@@ -66,13 +62,10 @@ def aplica_brillo(input, brightness):
                     input_img = cv2.imread(img_path, 1)
                     new_image = np.zeros(input_img.shape, input_img.dtype)
                     new_image = cv2.convertScaleAbs(input_img, alpha=1, beta=brightness)
-                    ##Agregar prefijo aumento
                     new_img_path,  new_img_name= get_prefix('brillo', brightness, img_path)
                     print(f'**************escribiendo imagen: {new_img_path}')
                     os.remove(img_path)
                     cv2.imwrite(new_img_path, new_image)
-
-                    ##corregir json
                     json_path = ('.').join(img_path.split('.')[:-1]) + '.json'
                     correct_json(json_path, new_img_name)
 
@@ -93,8 +86,6 @@ def aplica_contraste(input, contraste):
                     new_img_path,  new_img_name= get_prefix('contraste', contraste, img_path)
                     print(f'**************escribiendo imagen: {new_img_path}')
                     cv2.imwrite(new_img_path, new_image)
-
-                    ##corregir json
                     json_path = ('.').join(img_path.split('.')[:-1]) + '.json'
                     correct_json(json_path, new_img_name)
 
@@ -112,7 +103,6 @@ def aplica_saturacion(input, saturation):
                     img_path = path_1 + file
                     input_img = cv2.imread(img_path, 1)
                     new_image = cv2.cvtColor(input_img, cv2.COLOR_BGR2HSV).astype("float32")
-                    #saturation = saturation / 10
                     (h, s, v) = cv2.split(new_image)
                     s = s*saturation
                     s = np.clip(s,0,255)

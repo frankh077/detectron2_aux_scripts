@@ -12,11 +12,9 @@ import glob
 crop_width = 512 
 crop_height = 512
 
-#Input folder (must have test and train folders)
-input_folder = 'consolidado_v2_evidentes'
-#Output folder (must have test and train folders)
-output_folder = 'consolidado_v2_evidentes_aumentado_dropout'
-#prefix
+input_folder = 'folder/with/images'
+output_folder = 'folder/where/images_are_saved'
+
 prefix_name = 'A-dropout_'
 def polys_to_mask(polys, img):
     height, width = img.shape[:2]
@@ -41,7 +39,6 @@ def mask_to_label(mask, name):
                  "imageHeight": 600, 
                  "imageWidth": 800}
                  
-    #shapes es una lista de diccionarios
     for c in contours:
         clist = c.tolist()
         clist = [x[0] for x in clist]

@@ -6,9 +6,9 @@ import copy
 import os
 import glob
 
-input_path = 'consolidado_v2_evidentes_aumentado_dropout_color_consolidado'
-output_path = 'consolidado_v2_evidentes_aumentado_dropout_color_consolidado_rotaciones'
-json_file = 'consolidado_1/dataset.json'
+input_path = '/path/to/folder/with/images_to_infer' 
+output_path = r'/path/to/folder/where/images_are_saved'
+json_file = 'file/json/'
 prefix_name = 'A_rotation'
 
 
