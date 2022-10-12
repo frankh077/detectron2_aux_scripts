@@ -41,7 +41,7 @@ class Predictor:
     def __init__(self, weigths_path):
         self.cfg = get_cfg()
         self.cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
-        self.weights_path = weigths_path#Si no se monto el drive, aqui se debe ingresar la ruta de la ubicacion del archivo pth
+        self.weights_path = weigths_path
         print(f'weights_path: {self.weights_path}')
         self.cfg.MODEL.WEIGHTS = self.weights_path
         self.cfg.SOLVER.IMS_PER_BATCH = 2
@@ -222,7 +222,6 @@ class Predictor:
         for vert in hull.vertices:
             polygon.append(mask_coordinates[vert])
         
-        #simplices
         bbox_raw = bbox_raw.get_fields()
         bbox_raw = bbox_raw['pred_boxes'].tensor.numpy()
         bbox_raw = list(map(numpy.ndarray.tolist, bbox_raw))

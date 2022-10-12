@@ -1,5 +1,3 @@
-path = '/banano/uvas/racimos/datasets_entrenamiento/test'  #path de imagenes a inferir y evaluar
-path_result = r'/banano/uvas/results/evaluacion/modelo_color_giros_crops/iou_test_evidente'
 
 # import some common libraries. 
 import cv2
@@ -10,6 +8,9 @@ import numpy
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import ImageGrid
+
+input_path = '/path/to/folder/with/images' 
+output_path = r'/path/to/folder/where/images_are_saved'
 
 # import some common detectron2 utilities
 from detectron2 import model_zoo
@@ -229,18 +230,15 @@ def plot_mosaics (titulo, listf, dataset):
     return()
 
 print('EMPIEZA EL CALCULO')
-#inferencia y evaluacion
 dataset_dicts = get_dataset_dicts(path)
 font = cv2.FONT_HERSHEY_SIMPLEX
 
-#Listas para graficar crops 200x200
 listp = []
 listr = []
 fnp_crops = []
 fnr_crops = []
 fpp_crops = []
 fpr_crops = []
-#Listas para matrix de confusión
 fn = []
 fp = []
 tp = []

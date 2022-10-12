@@ -6,7 +6,7 @@ from pprint import pprint
 import copy
 import os
 
-input_path = '/path/to/folder/with/images_to_infer' 
+input_path = '/path/to/folder/with/images' 
 output_path = r'/path/to/folder/where/images_are_saved'
 json_file = 'file/json/'
 
