@@ -1,4 +1,3 @@
-## Convertidor JSON VIA elipses a formato para Detectron Mask RCNN
 import json
 import cv2
 from matplotlib import pyplot as plt
@@ -10,10 +9,8 @@ import os
 
 
 finished = 80
-
-filename = '/banano/uvas/racimos/datasets_entrenamiento/datasetCabernet/test/via_region_data.json'
-#Cantidad de fotos etiquetadas completamente
-path = '/banano/uvas/racimos/datasets_entrenamiento/datasetCabernet/test'
+path_filename = 'path/to/folder/with_datalabels.json'
+path = 'path/to/folder/with_data_labels_fully'
 dataset_name = 'datasetCabernet'
 
 
@@ -51,7 +48,7 @@ def Ellipse2Mask(ellipse,n):
 
 os.chdir(path)
 
-data = json.load(open(filename,"r"))
+data = json.load(open(path_filename,"r"))
 curr = 0
 dataset = []
 
