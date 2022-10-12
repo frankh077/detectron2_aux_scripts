@@ -1,8 +1,6 @@
 import detectron2
 from detectron2.utils.logger import setup_logger
 setup_logger()
-
-# import some common libraries
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
