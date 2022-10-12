@@ -66,7 +66,6 @@ for k,v in data.items():
 
     for i in v["regions"]:
         el = i["shape_attributes"]
-        #print(el)
         color = (0,0,255)
         thick = 4
         bbox = Ellipse2BBox(el)
