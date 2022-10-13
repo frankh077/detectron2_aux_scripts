@@ -20,3 +20,4 @@ for k, v in data.items():
             el["ry"])), el["theta"]*180/np.pi, 0.0, 360.0, color, thickness=thick)
 
     cv2.imwrite("annotations_img/"+k, img)
+

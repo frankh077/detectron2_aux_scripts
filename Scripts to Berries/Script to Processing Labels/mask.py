@@ -96,3 +96,4 @@ val = dataset[:cut]
 
 
 json.dump({"train": train, "val": val}, open("dataset.json", "w"))
+
