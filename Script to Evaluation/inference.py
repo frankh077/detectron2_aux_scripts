@@ -1,3 +1,4 @@
+# import some common libraries
 import numpy as np
 import cv2
 import os
@@ -7,7 +8,7 @@ from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
 from detectron2.config import get_cfg
 
-
+#define paths
 path = '/path/to/folder/with/images_to_infer'  
 path_result = r'/path/to/folder/where/images_are_saved' 
 dataset = os.path.basename(path)

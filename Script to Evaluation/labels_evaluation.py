@@ -1,3 +1,4 @@
+# import some common libraries
 import detectron2
 from detectron2.utils.logger import setup_logger
 import numpy as np
@@ -21,6 +22,7 @@ from scipy.spatial import ConvexHull, convex_hull_plot_2d
 
 setup_logger()
 
+#define paths
 weights_path = '/exterior/conteo_plantas/9febp2/9feb2_2/model_final.pth' 
 images_path = '/exterior/conteo_plantas/9febp2/9feb2_2/originales'
 new_labels = 0

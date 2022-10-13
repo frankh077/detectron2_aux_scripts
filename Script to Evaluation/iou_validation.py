@@ -1,3 +1,4 @@
+# import some common libraries
 import cv2
 import os
 import json
@@ -7,14 +8,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.axes_grid1 import ImageGrid
 
-input_path = '/path/to/folder/with/images' 
-output_path = r'/path/to/folder/where/images_are_saved'
-
 # import some common detectron2 utilities
 from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
 from detectron2.config import get_cfg
 from detectron2.structures import BoxMode
+
+#define paths
+input_path = '/path/to/folder/with/images' 
+output_path = r'/path/to/folder/where/images_are_saved'
+
 
 dataset = os.path.basename(path)
 
