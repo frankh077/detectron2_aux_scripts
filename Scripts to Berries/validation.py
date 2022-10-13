@@ -54,24 +54,17 @@ cd = 0
 cdi = 0
 
 for image in os.listdir(path):
-    #print(f'image')
     if image in val_images_names:
-        #print(f'In eval loop')
         image_list.append(image)
         im_path = str(os.path.join(path, image))
-        #print(f'****************image 1 : {im_path}')
         im = cv2.imread(im_path)
-        #im = plt.imread(im_path)
-        
-        #print(f'im: {im.shape}')
         outputs = predictor(im)
         pred_len = len(outputs["instances"])
         bbox_raw = outputs['instances'].to('cpu')
         bbox_raw = bbox_raw.get_fields()
         bbox_raw = bbox_raw['pred_boxes'].tensor.numpy()
-        #print(f'bbox_raw: {bbox_raw}')
         bbox_raw = list(map(numpy.ndarray.tolist, bbox_raw))
-        bbox_raw = list(map(lambda x: list(map(int, x)), bbox_raw))#esta
+        bbox_raw = list(map(lambda x: list(map(int, x)), bbox_raw))
         cd = cd + len(bbox_raw)
         cdi = len(bbox_raw)
 
@@ -82,13 +75,11 @@ for image in os.listdir(path):
 
         shapes_images = []
         idx = 0
-        #image = image.split("_")[-1]
-        #print(f'image: {image}')
+
         for p in data[image]['annotations']:
             idx = idx + 1 
             el = np.array(p['segmentation'][0])
             el_reshaped = el.reshape(round(len(el)/2),2)
-            #print(f'el_reshaped : {el_reshaped}')
             shapes_images.append(el)
             result = np.mean(el_reshaped, axis=0)
             result = np.round(result)
@@ -100,7 +91,6 @@ for image in os.listdir(path):
 
         idx = 0
         for bbox, score in zip(bbox_raw, scores_raw):
-            #print(f'bbox_raw:{bbox_raw}')
             idx = idx + 1 
             left_top = tuple(bbox[:2])
             right_bottom = tuple(bbox[2:])
@@ -111,7 +101,6 @@ for image in os.listdir(path):
         os.chdir(path_result)
         cv2.imwrite(image, im.astype(np.float32))
 
-        #print('DETECCIONES POR IMAGEN:', cdi)
         cdi_lis.append(cdi)
         dv = abs(cdi - len(shapes_images))
         dv_list.append(dv)
