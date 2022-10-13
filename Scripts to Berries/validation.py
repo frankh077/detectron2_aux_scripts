@@ -28,7 +28,7 @@ cfg.DATASETS.TEST = ("dataset_test", )
 cfg.TEST.DETECTIONS_PER_IMAGE = 200
 predictor = DefaultPredictor(cfg)
 
-#inferencia y evaluacion
+#inference and evaluation
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 f = open(etiquetas)
