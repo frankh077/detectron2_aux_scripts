@@ -21,6 +21,7 @@ This code modifies:
 - (+/-) contrast
 - (+/-) saturation
 - (+/-) gamma
+
 for each images.
 
 ### Dataset augmentation: Rotations
