@@ -1,3 +1,4 @@
+# import some common libraries
 import json
 import cv2
 from matplotlib import pyplot as plt
@@ -7,7 +8,7 @@ import random
 from detectron2.structures import BoxMode
 import os
 
-
+#define paths
 finished = 80
 path_filename = 'path/to/folder/with_datalabels.json'
 path = 'path/to/folder/with_data_labels_fully'
