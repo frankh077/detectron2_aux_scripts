@@ -16,7 +16,6 @@ path = '/path/to/folder/with/images_to_infer'
 path_result = r'/path/to/folder/where/images_are_saved' 
 etiquetas = 'json/file/path/with/labels'
 
-
 dataset = os.path.basename(path)
 
 cfg = get_cfg()
@@ -52,7 +51,7 @@ for image in os.listdir(path):
     bbox_raw = bbox_raw.get_fields()
     bbox_raw = bbox_raw['pred_boxes'].tensor.numpy()
     bbox_raw = list(map(numpy.ndarray.tolist, bbox_raw))
-    bbox_raw = list(map(lambda x: list(map(int, x)), bbox_raw))
+    bbox_raw = list(map(lambda x: list(map(int, x)), bbox_raw))#esta
     cd = cd + len(bbox_raw)
     cdi = len(bbox_raw)
 
@@ -83,6 +82,7 @@ for image in os.listdir(path):
     
     os.chdir(path_result)
     cv2.imwrite(image, im.astype(np.float32))
+
     cdi_lis.append(cdi)
     dv = abs(cdi - len(shapes_images))
     dv_list.append(dv)
