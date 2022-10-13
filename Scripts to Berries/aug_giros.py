@@ -1,3 +1,4 @@
+# import some common libraries
 from detectron2.data import transforms as T
 import cv2
 import json
@@ -6,6 +7,7 @@ from pprint import pprint
 import copy
 import os
 
+#define paths
 input_path = '/path/to/folder/with/images' 
 output_path = r'/path/to/folder/where/images_are_saved'
 json_file = 'file/json/with_lables'
