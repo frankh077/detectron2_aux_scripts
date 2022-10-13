@@ -6,16 +6,16 @@ import json
 import pandas as pd
 import numpy as np
 
+# import some common detectron2 utilities
+from detectron2 import model_zoo
+from detectron2.engine import DefaultPredictor
+from detectron2.config import get_cfg
+
 #define paths
 path = '/path/to/folder/with/images_to_infer'  
 path_result = r'/path/to/folder/where/images_are_saved' 
 etiquetas = 'json/file/path/with/labels'
 
-
-# import some common detectron2 utilities
-from detectron2 import model_zoo
-from detectron2.engine import DefaultPredictor
-from detectron2.config import get_cfg
 
 dataset = os.path.basename(path)
 

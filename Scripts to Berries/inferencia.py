@@ -1,10 +1,3 @@
-#definir paths
-
-#path de imagenes a inferir
-path = '/banano/uvas/datasets/v4/Fotos_Delano'  
-#path de carpeta donde se guardará las imagenes inferidas
-path_result = r'/banano/uvas/results/inferencia/modelo_final_omar/Fotos_Delano' 
-
 # import some common libraries
 import numpy as np
 import cv2
@@ -15,13 +8,16 @@ from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
 from detectron2.config import get_cfg
 
+#define paths
+path = '/path/to/folder/with/images_to_infer'  
+path_result = r'/path/to/folder/where/images_are_saved' 
+etiquetas = 'json/file/path/with/labels'
 dataset = os.path.basename(path)
 
 #load of weights
 cfg = get_cfg()
 cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
 cfg.MODEL.WEIGHTS = '/banano/uvas/model_final_omar.pth'
-#cfg.MODEL.WEIGHTS = '/banano/uvas/eddy/datasets/datasets/output/model_final.pth'
 cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5 
 cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1
 cfg.DATASETS.TEST = ("dataset_test", )
@@ -35,7 +31,6 @@ image_list = []
 cdi_lis = []
 cd = 0
 for image in os.listdir(path):
-    #print('IMAGES:', image)
     image_list.append(image)
     im = cv2.imread(os.path.join(path, image))
     outputs = predictor(im)
