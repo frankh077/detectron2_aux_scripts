@@ -1,3 +1,4 @@
+# import some common libraries
 from itertools import combinations, permutations
 from itertools import permutations
 import cv2
