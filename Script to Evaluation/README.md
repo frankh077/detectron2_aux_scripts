@@ -23,3 +23,7 @@ Finally, the [Labels Evaluation](https://github.com/frankh077/detectron2_aux_scr
 - draw_mask
 
 But in this case, just used the **make_pred** function which generates labels from the images inference, and also draws the bounding boxes with their respective annotations.
+
+# Images
+
+Mosaics of the evaluation through IOU of the Bunches detection model are shown below.
