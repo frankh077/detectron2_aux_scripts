@@ -29,13 +29,13 @@ But in this case, just used the **make_pred** function which generates labels fr
 Mosaics of the evaluation through IOU of the Bunches detection model are shown below.
 
 <p float="middle" >
-  <img src="" width="300%" />
+  <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/test-False%20Negatives-2.png" width="300%" alt="False Negative" />
 </p>
 
 <p float="middle" >
-  <img src="" width="300%" />
+  <img  src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/test-False%20Positives-1.png" width="300%" alt="False Positive" />
 </p>
 
 <p float="middle" >
-  <img src="" width="300%" />
+  <img  src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/test-True%20Positives-0.png" width="300%" alt="True Positive" />
 </p>
