@@ -8,7 +8,6 @@ In this repository you will find all the auxiliary  scripts that was used with d
 
 </p>
 
-![alt-text-1]( https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/berries_alarg.jpg "title-1") ![alt-text-2]( https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/bunch.jpg "title-2")
 
 ## Table of Contents
 
