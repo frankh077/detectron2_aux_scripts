@@ -25,12 +25,12 @@ This code modifies:
 for each images.
 
 <p align="middle" >
-  <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/Screen%20Shot%202022-10-14%20at%2011.25.23.png"  />
+  <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/aug_color.png"  />
 </p>
 
 ### Dataset augmentation: Rotations
 
 The rotations were from 45º to -45º, each 5º a rotation was made for a total of 19 rotations of the dataset.
 <p float="middle" >
-  <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/Screen%20Shot%202022-10-14%20at%2011.28.05.png" width="300%" />
+  <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/aug_rotat.png" width="300%" />
 </p>
