@@ -11,3 +11,8 @@ Since there are different types of berries, such as: round, oval and elongated, 
 
 As found a large number of berries per bunch, it was decided to contrast the number of labels vs. the number of detections, since there are labels and detections that overlap. Then, apply [validation](https://github.com/frankh077/detectron2_aux_scripts/blob/main/Scripts%20to%20Berries/evaluation.py) of the model was carried out through the inference of the test dataset. The evaluation code takes as input a json file that is generated from [mask code](https://github.com/frankh077/detectron2_aux_scripts/blob/main/Scripts%20to%20Berries/Script%20to%20Processing%20Labels/mask.py) that contains all the dataset labels.
 The inference  consist in draw the bounding box  and to calculate detections on images. Finally, to train the model use this [code](https://github.com/frankh077/detectron2_aux_scripts/blob/main/Scripts%20to%20Berries/train.py).
+
+
+<p align="middle" >
+  <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/resul_vali.jpg"  />
+</p>
