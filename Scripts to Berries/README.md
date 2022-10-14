@@ -13,6 +13,10 @@ As found a large number of berries per bunch, it was decided to contrast the num
 The inference  consist in draw the bounding box  and to calculate detections on images. Finally, to train the model use this [code](https://github.com/frankh077/detectron2_aux_scripts/blob/main/Scripts%20to%20Berries/train.py).
 
 
-<p align="middle" >
+<!-- <p align="middle" >
   <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/resul_vali.jpg"  />
-</p>
+</p> -->
+
+| ![](https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/resul_vali.jpg) | 
+|:--:| 
+| *Number of Labels vs. Number of Detections* |
