@@ -27,3 +27,15 @@ But in this case, just used the **make_pred** function which generates labels fr
 # Images
 
 Mosaics of the evaluation through IOU of the Bunches detection model are shown below.
+
+<p float="middle" >
+  <img src="" width="300%" />
+</p>
+
+<p float="middle" >
+  <img src="" width="300%" />
+</p>
+
+<p float="middle" >
+  <img src="" width="300%" />
+</p>
