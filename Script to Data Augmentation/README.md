@@ -24,13 +24,22 @@ This code modifies:
 
 for each images.
 
-<p align="middle" >
+<!-- <p align="middle" >
   <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/aug_color.png"  />
-</p>
+</p> -->
+
+| ![](https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/aug_color.png) | 
+|:--:| 
+| *Data Augmentation: Color* |
 
 ### Dataset augmentation: Rotations
 
 The rotations were from 45º to -45º, each 5º a rotation was made for a total of 19 rotations of the dataset.
-<p float="middle" >
+<!-- <p float="middle" >
   <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/aug_rotat.png" width="300%" />
-</p>
+</p> -->
+
+| ![](https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/aug_rotat.png) | 
+|:--:| 
+| *Data Augmentation: Rotation* |
+
