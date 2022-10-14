@@ -3,7 +3,7 @@
 In this repository you will find all the auxiliary  scripts that was used with detectron2  for berries detection in bunches of grapes images, allows the detection of circular, oval and elongated grapes shapes.
 
 <p >
-  <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/pic2.jpg"  width="500" />
+  <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/pic1.jpg"  width="500" />
   <img src="https://github.com/frankh077/detectron2_aux_scripts/blob/main/pictures/pic2.jpg"  width="500" />
 </p>
 
